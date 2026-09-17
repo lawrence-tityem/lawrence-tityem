@@ -18,7 +18,7 @@ I completed a B.Sc. in Computer Science at the University of Jos in 2025 and I'm
 
 ## Selected Work
 
-### [Sentinel Financial Ecosystem](https://github.com/lawrence-tityem/distributed-fintech-core)
+### [Sentinel Financial Ecosystem](https://github.com/lawrence-tityem/sentinel-financial-ecosystem)
 A distributed fintech backend for peer-to-peer wallet transfers. The system deals with concurrent balance mutations, idempotent transaction requests, fraud-service failures, asynchronous notifications, rate limiting, and observability.
 
 **Key engineering decisions**
