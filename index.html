@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Lumbol Lawrence Tityem — Backend Engineer, Fintech Systems</title>
+
+  <meta name="description" content="Backend engineer specializing in distributed fintech systems — event-driven architecture, wallet ledgers, and production-grade observability.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+
+    :root {
+
+      --color-bg: #0F1419;
+      --color-surface: #171D26;
+      --color-text: #E8E6DF;
+      --color-text-muted: #8B93A1;
+      --color-accent-gold: #C89B3C;
+      --color-accent-blue: #5B7FA6;
+      --color-hairline: #262E3A;
+
+      --font-display: 'Fraunces', serif;
+      --font-body: 'IBM Plex Sans', sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+
+      --space-1: 8px;
+      --space-2: 16px;
+      --space-3: 24px;
+      --space-4: 40px;
+      --space-5: 64px;
+      --space-6: 96px;
+
+      --content-width: 680px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a:focus-visible,
+    summary:focus-visible {
+      outline: 2px solid var(--color-accent-gold);
+      outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition: none !important;
+      }
+    }
+
+    .page {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: var(--space-5) var(--space-3);
+    }
+
+    .hero {
+
+      padding-bottom: var(--space-5);
+    }
+
+    .status-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--color-accent-gold);
+      border: 1px solid var(--color-accent-gold);
+      padding: 4px 12px;
+      border-radius: 3px;
+      margin-bottom: var(--space-3);
+    }
+
+    .status-tag::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--color-accent-gold);
+      display: inline-block;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--space-2);
+    }
+
+    .hero .role {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      color: var(--color-accent-blue);
+      margin-bottom: var(--space-3);
+    }
+
+    .hero p.pitch {
+      font-size: 1.05rem;
+      color: var(--color-text-muted);
+      max-width: 52ch;
+      margin-bottom: var(--space-4);
+    }
+
+    .hero .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .hero .actions a {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--color-text);
+      text-decoration: none;
+      border: 1px solid var(--color-hairline);
+      padding: 10px 18px;
+      border-radius: 3px;
+      transition: border-color 0.15s ease, color 0.15s ease;
+
+    }
+
+    .hero .actions a:hover {
+      border-color: var(--color-accent-blue);
+      color: var(--color-accent-blue);
+    }
+
+    .hero .actions a.primary {
+      border-color: var(--color-accent-gold);
+      color: var(--color-accent-gold);
+    }
+    .hero .actions a.primary:hover {
+      background-color: var(--color-accent-gold);
+      color: var(--color-bg);
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--color-hairline);
+      margin: var(--space-5) 0;
+    }
+
+    .section-stub {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      padding: var(--space-3) 0;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-3);
+    }
+
+    .case {
+      border-top: 1px solid var(--color-hairline);
+      padding: var(--space-3) 0;
+    }
+
+    .case summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: var(--space-2);
+    }
+
+    .case summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .case-title {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 1.15rem;
+      color: var(--color-text);
+    }
+
+    .case-rating {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--color-accent-gold);
+      white-space: nowrap;
+    }
+
+    .case-pitch {
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+      margin-top: var(--space-1);
+    }
+
+    .tech-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-1) var(--space-2);
+      margin-top: var(--space-2);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--color-accent-blue);
+    }
+
+    .case-body {
+      margin-top: var(--space-3);
+      padding-top: var(--space-3);
+      border-top: 1px dashed var(--color-hairline);
+    }
+
+    .case-body h4 {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-1);
+      margin-top: var(--space-3);
+    }
+
+    .case-body h4:first-child {
+      margin-top: 0;
+    }
+
+    .case-body p {
+      font-size: 0.95rem;
+      color: var(--color-text);
+    }
+
+    .decision {
+      border-left: 2px solid var(--color-accent-gold);
+      padding-left: var(--space-2);
+      font-size: 0.95rem;
+      color: var(--color-text);
+    }
+
+    .case-links {
+      margin-top: var(--space-3);
+      display: flex;
+      gap: var(--space-2);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+    }
+    .case-links a {
+      color: var(--color-accent-blue);
+    }
+
+    .stack-grid {
+      display: grid;
+
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: var(--space-4) var(--space-3);
+    }
+
+    .stack-group h4 {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-2);
+      padding-bottom: var(--space-1);
+      border-bottom: 1px solid var(--color-hairline);
+    }
+
+    .stack-group ul {
+      list-style: none;
+    }
+
+    .stack-group li {
+      font-size: 0.95rem;
+      padding: 4px 0;
+      color: var(--color-text);
+    }
+
+    .credentials-list {
+      list-style: none;
+    }
+
+    .credentials-list li {
+      padding: var(--space-1) 0;
+      border-bottom: 1px solid var(--color-hairline);
+    }
+
+    .credentials-list li:last-child {
+      border-bottom: none;
+    }
+
+    .credential-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .credential-sub {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      margin-top: 2px;
+    }
+
+    .also-built {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      padding: var(--space-2) 0;
+    }
+
+    .also-built-name {
+      font-weight: 600;
+    }
+
+    .also-built-tech {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+    }
+
+    .also-built a {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--color-accent-blue);
+      text-decoration: none;
+    }
+
+    .teaching p {
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+      max-width: 52ch;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: var(--space-2);
+    }
+
+    .contact-links a {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      color: var(--color-text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--color-hairline);
+      padding-bottom: 2px;
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .contact-links a:hover {
+      color: var(--color-accent-gold);
+      border-color: var(--color-accent-gold);
+    }
+
+    .footer-note {
+      margin-top: var(--space-6);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+    }
+
+    @media (max-width: 600px) {
+
+      :root {
+        --space-5: 40px;
+        --space-6: 56px;
+      }
+
+      .case summary {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-1);
+      }
+
+      .hero .actions a {
+        flex: 1 1 auto;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+
+    <section class="hero">
+
+      <span class="status-tag">Open to backend roles</span>
+
+      <h1>Lawrence Lumbol Tityem</h1>
+
+      <p class="role">Backend Engineer — Fintech & Distributed Systems</p>
+
+      <p class="pitch">
+       I built reliable backend systems for financial applications,
+       with a focus on transaction integrity, digital wallet operations, event-driven architecture, fraud-detection, 
+        APIs, and observability.
+
+I enjoy solving problems where correctness matters — from
+concurrent transactions and idempotency to service failures and data consistency.
+      </p>
+
+      <div class="actions">
+        <a href="#sentinel" class="primary">View Sentinel</a>
+        <a href="#order-processing">View Order Processing</a>
+        <a href="https://github.com/lawrence-tityem" target="_blank" rel="noopener">GitHub</a>
+      </div>
+
+    </section>  
+
+    <hr class="divider">
+
+    <section>
+      <p class="section-label">Selected systems</p>
+
+      <details id="sentinel" class="case">
+
+        <summary>
+          <span>
+            <span class="case-title">Sentinel Financial Ecosystem</span>
+            <p class="case-pitch">Synchronous fintech core — P2P wallet transfers with bank-grade integrity guarantees.</p>
+          </span>
+          <span class="case-rating">completed</span>
+        </summary>
+
+        <ul class="tech-list">
+          <li>FastAPI</li>
+          <li>PostgreSQL</li>
+          <li>Redis</li>
+          <li>Celery</li>
+          <li>Scikit-Learn</li>
+          <li>Prometheus + Grafana</li>
+          <li>OpenTelemetry</li>
+          <li>Docker Compose</li>
+        </ul>
+
+        <div class="case-body">
+
+          <h4>Problem</h4>
+          <p>
+            Concurrent balance mutations on the same wallet, duplicate
+            transaction retries, and asynchronous fraud scoring all had
+            to be handled correctly — without blocking legitimate users
+            when a downstream service (fraud, notifications) is slow or down.
+          </p>
+
+          <h4>Key decision</h4>
+          <p class="decision">
+            Fraud scoring fails <strong>open</strong>, not closed: if the
+            ML fraud service is unreachable after three retries, the
+            transfer proceeds and the event is logged — rather than
+            blocking every legitimate transfer whenever one internal
+            service has a bad moment. Pessimistic row-level locks are
+            acquired in deterministic wallet-ID order specifically to
+            make deadlocks structurally impossible, not just unlikely.
+          </p>
+
+          <h4>Test results</h4>
+          <p>49 passed, 6 skipped across 5 modules (auth, wallet, transfer, fraud, rate limiting) — 119.63s run.</p>
+
+          <div class="case-links">
+            <a href="https://github.com/lawrence-tityem" target="_blank" rel="noopener">Source →</a>
+          </div>
+        </div>
+      </details>
+
+      <details id="order-processing" class="case">
+        <summary>
+          <span>
+            <span class="case-title">Event-Driven Order Processing System</span>
+            <p class="case-pitch">Asynchronous companion system — services coordinated only through a Kafka event stream, no shared database.</p>
+          </span>
+          <span class="case-rating">completed</span>
+        </summary>
+
+        <ul class="tech-list">
+          <li>Kafka (KRaft)</li>
+          <li>FastAPI</li>
+          <li>PostgreSQL 16</li>
+          <li>SQLAlchemy (async)</li>
+          <li>confluent-kafka</li>
+          <li>Docker Compose</li>
+        </ul>
+
+        <div class="case-body">
+
+          <h4>Problem</h4>
+          <p>
+            Coordinate state across five independently owned services
+            with no shared database and no synchronous calls between
+            them — specifically solving the dual-write problem (writing
+            to your own database <em>and</em> announcing that write to
+            Kafka, two systems with no shared transaction) and idempotent
+            consumption under at-least-once delivery.
+          </p>
+
+          <h4>Key decision</h4>
+          <p class="decision">
+            <code>payment-worker</code> reacts to <code>InventoryReserved</code>,
+            never <code>OrderCreated</code> directly — charging a customer
+            before stock is confirmed available is a business error this
+            topology makes structurally impossible, not just discouraged
+            by convention. The dual-write problem itself is mitigated by
+            writing to Postgres first, then publishing to Kafka as a
+            separate step with its own retry and dead-letter path — a
+            full Transactional Outbox pattern is scoped but intentionally
+            deferred, and documented as such.
+          </p>
+
+          <h4>Honest limitations</h4>
+          <p>
+            Notification-worker does not yet subscribe to rejected orders;
+            Alembic migrations are not yet in place; only inventory-worker's
+            automated test suite is complete so far. Documented rather than hidden.
+          </p>
+
+          <div class="case-links">
+            <a href="https://github.com/lawrence-tityem" target="_blank" rel="noopener">Source →</a>
+          </div>
+        </div>
+      </details>
+
+      <details id="job-queue" class="case">
+        <summary>
+          <span>
+            <span class="case-title">Distributed Job Queue System</span>
+            <p class="case-pitch">Postgres-native background job queue — no Redis, no Kafka, the database is both the queue and the system of record.</p>
+          </span>
+          <span class="case-rating">completed</span>
+        </summary>
+
+        <ul class="tech-list">
+          <li>FastAPI</li>
+          <li>PostgreSQL 16</li>
+          <li>SQLAlchemy (async)</li>
+          <li>asyncpg</li>
+          <li>Prometheus</li>
+          <li>Docker Compose</li>
+        </ul>
+
+        <div class="case-body">
+
+          <h4>Problem</h4>
+          <p>
+            Run background jobs (retryable, priority-ordered, safe under
+            multiple concurrent workers) without introducing a second
+            infrastructure dependency — and without the dual-write problem
+            a Redis- or Kafka-backed queue has between "the broker" and
+            "the database."
+          </p>
+
+          <h4>Key decision</h4>
+          <p class="decision">
+            Postgres is the queue itself: workers claim jobs via
+            <code>SELECT ... FOR UPDATE SKIP LOCKED</code>, ordered by
+            priority then FIFO within a tier, so priority never causes
+            starvation. Crash recovery needs no separate heartbeat
+            service — a claim's <code>locked_at</code> plus a
+            <code>visibility_timeout_seconds</code> defines its own
+            expiry, so a crashed worker's job becomes reclaimable through
+            the exact same claim query. Failed jobs get exponential
+            backoff up to a cap, then land in a dead-lettered state that's
+            inspectable and manually replayable — never silently dropped.
+          </p>
+
+          <h4>Observability</h4>
+          <p>
+            Prometheus metrics wired across both the API and worker
+            processes (submission/completion/retry/dead-letter counters,
+            claim-latency histogram, queue-depth gauge), scraped as two
+            separate targets and queryable live.
+          </p>
+
+          <h4>Honest limitations</h4>
+          <p>
+            No Alembic migrations yet — tables are created via
+            <code>create_all</code> on API startup, with a documented
+            (and narrow) cold-start race against the worker's first poll.
+            Only one handler exists so far (a simulated email send), since
+            the point of the project is the queue mechanics, not a real
+            notification pipeline.
+          </p>
+
+          <div class="case-links">
+            <a href="https://github.com/lawrence-tityem" target="_blank" rel="noopener">Source →</a>
+          </div>
+        </div>
+      </details>
+
+      <details id="api-gateway" class="case">
+        <summary>
+          <span>
+            <span class="case-title">API Gateway &amp; Request Processing System</span>
+            <p class="case-pitch">A single gateway handling auth, rate limiting, retries, and circuit breaking so no backend service has to reimplement any of it.</p>
+          </span>
+          <span class="case-rating">completed</span>
+        </summary>
+
+        <ul class="tech-list">
+          <li>FastAPI</li>
+          <li>Redis</li>
+          <li>JWT Auth</li>
+          <li>Docker Compose</li>
+          <li>pytest</li>
+        </ul>
+
+        <div class="case-body">
+
+          <h4>Problem</h4>
+          <p>
+            Four backend services (user, order, payment, wallet) each
+            need authentication, rate limiting, retries, and error
+            handling — duplicating that logic in every service is both
+            wasteful and a consistency risk. One gateway in front of all
+            four, with a single generic proxy route rather than a
+            hand-written endpoint per service.
+          </p>
+
+          <h4>Key decision</h4>
+          <p class="decision">
+            POST requests are never retried, regardless of a service's
+            configured retry count — if a POST to payment-service times
+            out, the charge may have actually succeeded and the response
+            was simply lost; retrying blindly risks a duplicate charge.
+            The gateway also fails <strong>closed</strong>: any route not
+            explicitly listed as public requires a valid JWT by default,
+            so forgetting to register a new public route causes a safe
+            401, not an accidentally open endpoint.
+          </p>
+
+          <h4>Scope limit, stated deliberately</h4>
+          <p>
+            Circuit breaking is in-memory and per-process, not
+            Redis-backed like rate limiting is — a real multi-instance
+            gateway would need that state shared too. Kept in-memory here
+            so the breaker's state machine itself stayed the focus,
+            rather than distributed-state plumbing.
+          </p>
+
+          <div class="case-links">
+            <a href="https://github.com/lumbol77" target="_blank" rel="noopener">Source →</a>
+          </div>
+        </div>
+      </details>
+
+    </section>
+
+    <hr class="divider">
+
+    <section>
+      <p class="section-label">Stack</p>
+
+      <div class="stack-grid">
+
+        <div class="stack-group">
+          <h4>Backend & APIs</h4>
+          <ul>
+            <li>FastAPI</li>
+            <li>Python 3.11</li>
+            <li>SQLAlchemy (async)</li>
+            <li>Pydantic</li>
+          </ul>
+        </div>
+
+        <div class="stack-group">
+          <h4>Data & Messaging</h4>
+          <ul>
+            <li>PostgreSQL</li>
+            <li>Redis</li>
+            <li>Kafka (KRaft)</li>
+            <li>asyncpg</li>
+          </ul>
+        </div>
+
+        <div class="stack-group">
+          <h4>Auth & Security</h4>
+          <ul>
+            <li>JWT (HS256)</li>
+            <li>Bcrypt / Passlib</li>
+            <li>Idempotency middleware</li>
+          </ul>
+        </div>
+
+        <div class="stack-group">
+          <h4>Observability & DevOps</h4>
+          <ul>
+            <li>Prometheus</li>
+            <li>Grafana</li>
+            <li>OpenTelemetry</li>
+            <li>Docker Compose</li>
+          </ul>
+        </div>
+
+        <div class="stack-group">
+          <h4>Testing</h4>
+          <ul>
+            <li>pytest / pytest-asyncio</li>
+            <li>Mocked Kafka producers</li>
+            <li>SQLite compatibility shims</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <section>
+      <p class="section-label">Certifications & honors</p>
+
+      <ul class="credentials-list">
+        <li>
+          <span class="credential-title">B.Sc. Computer Science</span>
+          <span class="credential-sub">University of Jos, Nigeria — 2025</span>
+        </li>
+        <li>
+          <span class="credential-title">NYSC State Honors Awardee</span>
+          <span class="credential-sub">Adamawa State — 2025 · recognized for outstanding service during NYSC</span>
+        </li>
+        <li>
+          <span class="credential-title">Cybersecurity Certificate</span>
+          <span class="credential-sub">Cisco Networking Academy</span>
+        </li>
+      </ul>
+    </section>
+
+    <hr class="divider">
+
+    <section>
+      <p class="section-label">Also built</p>
+
+      <div class="also-built">
+        <div>
+          <span class="also-built-name">oxfordcreativeschool.com</span><br>
+          <span class="also-built-tech">Next.js · React · JavaScript</span>
+        </div>
+        <a href="https://oxfordcreativeschool.com" target="_blank" rel="noopener">Visit site →</a>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <section class="teaching">
+      <p class="section-label">Teaching</p>
+      <p>
+        Digital technology teacher for secondary school students in
+        Nigeria — breaking down distributed-systems-level thinking into
+        plain, step-by-step explanations is a habit that carries directly
+        into how I document and hand off backend systems.
+      </p>
+    </section>
+
+    <hr class="divider">
+
+    <section>
+      <p class="section-label">Contact</p>
+
+      <div class="contact-links">
+
+        <a href="mailto:lumbolt@gmail.com">lumbolt@gmail.com</a>
+        <a href="https://github.com/lumbol77" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/lawrence-tityem-117731213" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://wa.me/2348065465774" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+
+      <p class="footer-note">Lumbol Lawrence Tityem — plateau State, Nigeria</p>
+    </section>
+
+  </div>
+
+</body>
+</html>
