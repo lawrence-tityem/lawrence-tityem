@@ -56,14 +56,13 @@ reads like a systems report, not a marketing landing page.
 ## 🎯 Projects Featured
 1. **Sentinel Financial Ecosystem** — production-grade distributed
    fintech backend: wallet transfers, fraud detection, observability.
-   9.2/10 mentor rating, 49 passing tests.
+   
    GitHub: https://github.com/lawrence-tityem/Sentinel-Financial-Ecosystem 
 2. **Event-Driven Order Processing System** — Kafka-based event-driven
    companion system demonstrating the dual-write problem and idempotent
-   consumption. In progress.
-   GitHub: https://github.com/lawrence-github 
-3. **api-gateway-system** — in progress, not yet added to the live site.
-   Will be added once complete.
+   consumption. completd.
+   GitHub: https://github.com/lawrence-tityem
+3. **api-gateway-system** — completed.
 
 ## 🏅 Certifications & Honors
 - B.Sc. Computer Science — University of Jos, Nigeria (2024)
@@ -214,4 +213,3 @@ I'm looking for my first professional backend engineering opportunity.
 Fintech is a strong area of interest because of the engineering constraints around payments, transaction integrity, fraud, consistency, and reliability — but I'm not limiting myself to fintech. I'm interested in teams building serious backend systems, infrastructure, APIs, data-intensive services, and distributed workflows.
 
 📍 Based in Nigeria. Open to local and remote opportunities.
->>>>>>> 97c4c9b12eb28cc0e827562fea10ff8486014acf
