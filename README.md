@@ -57,11 +57,11 @@ reads like a systems report, not a marketing landing page.
 1. **Sentinel Financial Ecosystem** — production-grade distributed
    fintech backend: wallet transfers, fraud detection, observability.
    9.2/10 mentor rating, 49 passing tests.
-   GitHub: https://github.com/lumbol77 *(update with the actual repo link)*
+   GitHub: https://github.com/lawrence-tityem/Sentinel-Financial-Ecosystem 
 2. **Event-Driven Order Processing System** — Kafka-based event-driven
    companion system demonstrating the dual-write problem and idempotent
    consumption. In progress.
-   GitHub: https://github.com/lumbol77 *(update with the actual repo link)*
+   GitHub: https://github.com/lawrence-github 
 3. **api-gateway-system** — in progress, not yet added to the live site.
    Will be added once complete.
 
@@ -87,8 +87,8 @@ Deployed on **Vercel (free tier)**:
 
 ## 🤝 Connect
 - **Email**: lumbolt@gmail.com
-- **GitHub**: https://github.com/lumbol77
-- **LinkedIn**: [add your LinkedIn URL]
+- **GitHub**: https://github.com/lawrence-tityem
+- **LinkedIn**: https://linkedin.com/in/lawrence-tityem
 - **Location**: Anambra State, Nigeria
 
 ## 🔜 Not Yet Done
